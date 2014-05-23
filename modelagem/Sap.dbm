@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="sap" fill-color="#e1e1e1">
+</schema>
+
+<database name="Sap">
+</database>
+
+<table name="unidade_federativa" oids="false">
+	<schema name="sap"/>
+	<comment><![CDATA[Guarda as unidades_federativas com as quais trabalhamos]]></comment>
+	<position x="26" y="20"/>
+	<column name="id_unidade_federativa" not-null="true">
+		<type name="bigserial"/>
+		<comment><![CDATA[Chave Primaria]]></comment>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Nome]]></comment>
+	</column>
+	<column name="sigla" not-null="true">
+		<type name="varchar" length="2"/>
+		<comment><![CDATA[sigla]]></comment>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_unidade_federativa" type="pk-constr" factor="10" table="sap.unidade_federativa">
+		<columns names="id_unidade_federativa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="convenio" oids="false">
+	<schema name="sap"/>
+	<comment><![CDATA[Guarda os convenios registrados]]></comment>
+	<position x="52" y="322"/>
+	<column name="id_convenio" not-null="true">
+		<type name="bigserial"/>
+		<comment><![CDATA[Chave Primaria]]></comment>
+	</column>
+	<column name="id_unidade_federativa" not-null="true">
+		<type name="bigint"/>
+		<comment><![CDATA[Chave Estrangeira da Tabela unidade_federativa]]></comment>
+	</column>
+	<column name="sigla_convenio" not-null="true">
+		<type name="varchar" length="5"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nome do Convenio]]></comment>
+	</column>
+	<column name="operando" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_convenio" type="pk-constr" factor="10" table="sap.convenio">
+		<columns names="id_convenio" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_unidade_federativa_convenio" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.unidade_federativa" table="sap.convenio">
+		<columns names="id_unidade_federativa" ref-type="src-columns"/>
+		<columns names="id_unidade_federativa" ref-type="dst-columns"/>
+	</constraint>
+</table>
+
+<relationship name="rel_convenio_unidade_federativa" type="relfk"
+	 src-table="sap.convenio"
+	 dst-table="sap.unidade_federativa"
+	 src-required="false" dst-required="false"/>
+
+<table name="competencia" oids="false">
+	<schema name="sap"/>
+	<comment><![CDATA[Guarda as competencias para as ações]]></comment>
+	<position x="53" y="700"/>
+	<column name="id_competencia" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="ano" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="mes" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_compentecia" type="pk-constr" factor="10" table="sap.competencia">
+		<columns names="id_competencia" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="perfil" oids="false">
+	<schema name="sap"/>
+	<position x="505" y="32"/>
+	<column name="id_perfil" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="perfil" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_tipo_pessoa" type="pk-constr" factor="10" table="sap.perfil">
+		<columns names="id_perfil" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuario" oids="false">
+	<schema name="sap"/>
+	<position x="567" y="312"/>
+	<column name="id_usuario" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="id_perfil" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="doc_federal" not-null="true">
+		<type name="varchar" length="14"/>
+	</column>
+	<column name="login" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_usuario" type="pk-constr" factor="10" table="sap.usuario">
+		<columns names="id_usuario" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_perfil_usuario" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="sap.perfil" table="sap.usuario">
+		<columns names="id_perfil" ref-type="src-columns"/>
+		<columns names="id_perfil" ref-type="dst-columns"/>
+	</constraint>
+</table>
+
+<relationship name="rel_usuario_perfil" type="relfk"
+	 src-table="sap.usuario"
+	 dst-table="sap.perfil"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<table name="icone" oids="false">
+	<schema name="sap"/>
+	<position x="1480" y="495"/>
+	<column name="id_icone" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="icone" not-null="true">
+		<type name="text"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="extensao" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_icone" type="pk-constr" factor="10" table="sap.icone">
+		<columns names="id_icone" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tipo_processamento" oids="false">
+	<schema name="sap"/>
+	<comment><![CDATA[Guarda os variados tipos de processamento utilizados]]></comment>
+	<position x="1000" y="324"/>
+	<column name="id_tipo_processamento" not-null="true">
+		<type name="bigserial"/>
+		<comment><![CDATA[Chave Primaria]]></comment>
+	</column>
+	<column name="id_icone" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nome]]></comment>
+	</column>
+	<column name="padrao" not-null="true" default-value="-1">
+		<type name="smallint"/>
+		<comment><![CDATA[Diz se o processamento é padrão]]></comment>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+		<comment><![CDATA[st]]></comment>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[flag]]></comment>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_tipo_processamento" type="pk-constr" factor="10" table="sap.tipo_processamento">
+		<columns names="id_tipo_processamento" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_icone_tipo_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.icone" table="sap.tipo_processamento">
+		<columns names="id_icone" ref-type="src-columns"/>
+		<columns names="id_icone" ref-type="dst-columns"/>
+	</constraint>
+</table>
+
+<relationship name="rel_tipo_processamento_icone" type="relfk"
+	 src-table="sap.tipo_processamento"
+	 dst-table="sap.icone"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="124.476" y="-32.5486"/>
+	</label>
+</relationship>
+
+<table name="status" oids="false">
+	<schema name="sap"/>
+	<position x="1061" y="700"/>
+	<column name="id_status" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="id_icone" not-null="true">
+		<type name="bigint" length="20"/>
+	</column>
+	<column name="nome_status" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="descricao_status">
+		<type name="text" length="20"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_status" type="pk-constr" factor="10" table="sap.status">
+		<columns names="id_status" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_icone_status" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.icone" table="sap.status">
+		<columns names="id_icone" ref-type="src-columns"/>
+		<columns names="id_icone" ref-type="dst-columns"/>
+	</constraint>
+</table>
+
+<relationship name="rel_status_icone" type="relfk"
+	 src-table="sap.status"
+	 dst-table="sap.icone"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="67.9757" y="-19.0485"/>
+	</label>
+</relationship>
+
+<table name="processamento" oids="false">
+	<schema name="sap"/>
+	<position x="519" y="645"/>
+	<column name="id_processamento" not-null="true">
+		<type name="bigserial"/>
+	</column>
+	<column name="id_convenio" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="id_competencia" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="id_tipo_processamento" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="id_status" not-null="true">
+		<type name="bigint"/>
+	</column>
+	<column name="id_usuario_processamento">
+		<type name="bigint"/>
+	</column>
+	<column name="id_usuario_conferencia">
+		<type name="bigint"/>
+	</column>
+	<column name="dt_previsao_recebimento_arquivo">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_recebimento_arquivo">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_previsao_processamento" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_processamento">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_previsao_disponibilizacao">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_disponibilizacao">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_liberacao_faturamento">
+		<type name="timestamp"/>
+	</column>
+	<column name="tempo_estimado">
+		<type name="time" length="20"/>
+	</column>
+	<column name="tempo_gasto">
+		<type name="time" length="20"/>
+	</column>
+	<column name="liberado_faturamento">
+		<type name="smallint"/>
+		<comment><![CDATA[Diz se está liberado para o financeiro faturar.]]></comment>
+	</column>
+	<column name="observacao">
+		<type name="text"/>
+	</column>
+	<column name="st" not-null="true" default-value="1">
+		<type name="smallint"/>
+	</column>
+	<column name="flag" default-value="0">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="dt_inclusao" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="dt_situacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="chave_primaria_id_processamento" type="pk-constr" factor="10" table="sap.processamento">
+		<columns names="id_processamento" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_convenio_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.convenio" table="sap.processamento">
+		<columns names="id_convenio" ref-type="src-columns"/>
+		<columns names="id_convenio" ref-type="dst-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_competencia_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.competencia" table="sap.processamento">
+		<columns names="id_competencia" ref-type="src-columns"/>
+		<columns names="id_competencia" ref-type="dst-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_tipo_processamento_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.tipo_processamento" table="sap.processamento">
+		<columns names="id_tipo_processamento" ref-type="src-columns"/>
+		<columns names="id_tipo_processamento" ref-type="dst-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_status_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.status" table="sap.processamento">
+		<columns names="id_status" ref-type="src-columns"/>
+		<columns names="id_status" ref-type="dst-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_usuario_processamento_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.usuario" table="sap.processamento">
+		<columns names="id_usuario_processamento" ref-type="src-columns"/>
+		<columns names="id_usuario" ref-type="dst-columns"/>
+	</constraint>
+	<constraint name="chave_estrangeira_id_usuario_conferencia_processamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="RESTRICT" del-action="RESTRICT" ref-table="sap.usuario" table="sap.processamento">
+		<columns names="id_usuario_conferencia" ref-type="src-columns"/>
+		<columns names="id_usuario" ref-type="dst-columns"/>
+	</constraint>
+</table>
+
+<relationship name="rel_processamento_convenio" type="relfk"
+	 src-table="sap.processamento"
+	 dst-table="sap.convenio"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-97.2743" y="-81.0485"/>
+	</label>
+</relationship>
+
+<relationship name="rel_processamento_competencia" type="relfk"
+	 src-table="sap.processamento"
+	 dst-table="sap.competencia"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-32.0243" y="30.9515"/>
+	</label>
+</relationship>
+
+<relationship name="rel_processamento_tipo_processamento" type="relfk"
+	 src-table="sap.processamento"
+	 dst-table="sap.tipo_processamento"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="133.726" y="-86.5485"/>
+	</label>
+</relationship>
+
+<relationship name="rel_processamento_status" type="relfk"
+	 src-table="sap.processamento"
+	 dst-table="sap.status"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="22.2257" y="7.95148"/>
+	</label>
+</relationship>
+
+<relationship name="rel_processamento_usuario" type="relfk"
+	 src-table="sap.processamento"
+	 dst-table="sap.usuario"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="14.7257" y="-83.5485"/>
+	</label>
+</relationship>
+
+</dbmodel>

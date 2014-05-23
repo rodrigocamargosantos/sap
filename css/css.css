@@ -1,0 +1,360 @@
+body {
+	background:#94c6d5;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+#Manu{
+     position: relative;
+}
+
+form {
+	margin:0px;
+	padding:0px;
+}
+
+img {
+	border:0px;
+}
+
+#divTopo{
+	width: 100%;
+	height: 40px;
+}
+
+.obrigatorio{
+	font-size:12px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FF0000;
+	padding-left:2px;
+}
+
+.bg {
+	background:url(../imagens/bg.gif);
+	background-repeat:repeat-x;	
+}
+
+.bg_intera {
+	border-left:1px solid #75abcd;
+	border-right:1px solid #75abcd;
+	border-bottom:1px solid #75abcd;
+}
+
+.bg_degrade {
+	background:url(../imagens/bg_interna.gif);
+	background-repeat:repeat-x;
+}
+
+.login {
+	border:1px solid #cce0ec;
+	background:#e6f3f8;
+	width:275px;
+}
+
+.campo {
+	background:#fff;
+	border:1px solid #75abcd;
+	color:#000;
+}
+.botao {
+	background:#006a91;
+	border:1px solid #006a91;
+	color:#FFF;
+	cursor: pointer;
+}
+
+.botaoOff {
+	background:#999999;
+	border:1px solid #999999;
+	color:#000;
+	cursor: pointer;
+}
+
+.texto {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+
+.titulo {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:30px;
+	color:#000;
+	padding-left:10px;
+}
+
+.divisao_menu {
+	background:url(../imagens/divisao.gif);
+	background-repeat:repeat-x;
+	height:10px;
+}
+
+.menu {
+	background:#e8f5f9;
+	height:50px;
+}
+.menu_texto {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:17px;
+	float:left;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+a.hoverMenu:link {
+	text-decoration: none;
+	color:#2b7b94;
+}
+a.hoverMenu:visited {
+	text-decoration: none;
+	color:#2b7b94;
+}
+a.hoverMenu:hover {
+	text-decoration: underline;
+	color:#073c4d;
+}
+a.hoverMenu:active {
+	text-decoration: none;
+	color:#2b7b94;
+}
+
+.rodape {
+	background:url(../imagens/rodape.gif);
+	height:86px;
+	color:#000;
+}
+
+.titulo_conteudo {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:18px;
+	color:#086d90;
+	padding:10px;
+}
+
+.texto_botao {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#086d90;
+	border-bottom:1px solid #e8f5f9;	
+	padding:10px;
+}
+
+.texto_conteudo {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#0e4353;
+	text-align:justify;
+	font-size:12px;
+	line-height:20px;
+}
+
+.interna {
+     padding:10px;
+}
+
+.internaTop {
+     padding-top:10px;
+     padding-right:10px;
+     padding-left:10px;
+}
+
+.internaBottom {
+     padding-bottom:10px;
+     padding-right:10px;
+     padding-left:10px;
+}
+
+.error {
+	border: 1px solid #9D0000;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#720505;
+	background-color:#F2E5E5;
+	font-weight:bold;
+	text-align:center;
+	width:80%;
+	padding:5px;
+	display:none;
+}
+
+.errorManu {
+	border: 1px solid #9D0000;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000000;
+	background-color:#F2E5E5;
+	padding:5px 5px 5px 5px;
+	display:none;
+}
+
+.erroValidacao{
+	border:#FF6666;
+	border-width:1px;
+	border-style:solid;
+	background:#FFFFCC;
+}
+
+.semResultado{
+	border: 1px solid #9D0000;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000000;
+	background-color:#F2E5E5;
+	width:98%;
+	text-align:center;
+	padding:5px 5px 5px 5px;
+}
+
+.sucessoManu {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#000000;
+	text-align:center;
+	background-color:#FFD363;
+	height:20px;
+	overflow:auto;
+	margin-left:5px;
+	display:none;
+}
+
+.textoTituloGrid{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#041B39;
+	width:170px;
+	padding-right:5px;
+	height:25px;
+}
+
+.textoGrid{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:11px;	
+	color:#041B39;
+}
+
+.textoTituloGridRelatorio{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#041B39;
+	width:170px;
+	padding-right:5px;
+	height:40px;
+}
+
+.textoGridRelatorio{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;	
+	color:#041B39;
+	height:30px;
+}
+
+.zebraA{
+	background:#e8f5f9;
+	border-bottom:solid #CCCCCC 1px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.zebraB{
+	border-bottom:solid #CCCCCC 1px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.textoEsquerda{
+	text-align:left;
+}
+
+.textoDireita{
+	text-align:right;
+}
+
+.textoCentro{
+	text-align:center;
+}
+
+.legenda{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	padding:5px;
+	color:#041B39;
+}
+
+.textoLegenda{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;	
+	color:#041B39;
+	padding:5px;
+}
+
+legend {
+	/* codigo... */
+}
+
+fieldset{ 
+	border:1px solid;
+	color:#041B39;
+	padding:9px;
+}
+
+/*
+** Paginacao
+*/
+.paginacao{
+     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+     font-size:12px;
+     padding:5px;
+}
+
+.paginacaoOff{
+     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+     font-size:12px;
+     padding:5px;
+     color:#999999;
+}
+
+a.linkpag:link{ 
+     color:#2b7b94; 
+     text-decoration:none;
+}
+
+a.linkpag:visited{ 
+     color:#2b7b94; 
+     text-decoration:none; 
+}
+
+a.linkpag:hover{ 
+     color:#2b7b94; 
+     text-decoration:underline; 
+}
+
+.getPaginacao{
+     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+     font-size: 12px;
+     position: absolute;
+     width:500px;
+     left:50%;
+     margin-left:-250px;
+}
+
+.getLimitePaginacao{
+     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+     font-size: 9px;
+     color:#999999;
+     padding-right:10px;     
+     position: absolute;
+     right: 0px;     
+}
+
+.campoPaginacao{
+     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+     font-size: 9px;
+     margin: 3px 0 3px 0;
+     border: none;
+     color:#999999;
+     background-color: #f1f4f7;
+}
